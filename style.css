@@ -138,17 +138,53 @@ table {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
     background-color: lightgrey;
     width: 300px;
-    border: solid 10px #28282B;
+    border: ridge 10px #28282B;
 }
 
 #display {
     display: flex;
     justify-content: flex-end;
+    margin-top: 50px;
+    background-color: #D4D4D2;
+    font-size: 3rem;
 }
 
 #buttons {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background-color: #fff;
+    border-top: ridge 10px #28282B;
+}
+
+.operator {
+    background-color: #FF9500;
+}
+
+button {
+    height: 60px;
+    /* background-color: #949493; */
+    border-radius: 3px;
+    border: 1px solid #28282B;
+    background-color: transparent;
+    font-size: 2rem;
+    color: #333;
+    background-image: linear-gradient(to bottom, transparent, transparent 50%, rgba(0, 0, 0, .04));
+    text-shadow: 0 1px rgba(255, 255, 255, .4);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05), inset 0 1px 0 0 rgba(255, 255, 255, .45), inset 0 -1px 0 0 rgba(255, 255, 255, .15), 0 1px 0 0 rgba(255, 255, 255, .15);
+
+    &:active {
+        box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
+        transform: translateY(2px);
+    }
+}
+
+button:hover {
+    background-color: #eaeaea;
+}
+
+.operator:hover {
+    background-color: #E68600;
 }
