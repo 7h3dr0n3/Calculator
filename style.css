@@ -140,6 +140,7 @@ table {
     margin-right: auto;
     background-color: lightgrey;
     width: 300px;
+    border: solid 10px #28282B;
 }
 
 #display {
