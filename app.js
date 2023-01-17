@@ -29,3 +29,27 @@ function operate(operator, a, b) {
             break;
     }
 };
+
+
+//1. if clickValue === operand/number then concat
+//2. else if clickValue === operator/+
+//then save displayedValue to numOne
+//save clickedValue to operator and concat " + " to displayedValue
+//fontSize = contWidth * maxFontSize / textWidth
+
+const display = document.getElementById('display');
+let displayValue = "", numTwo = "";
+
+const allButtons = document.querySelectorAll('button');
+allButtons.forEach(element => {
+    element.addEventListener('click', event => {
+        let clickValue = `${event.target.value}`;
+
+        if (!(event.target.classList.contains('operator'))) {
+            // console.log('is a Number', clickValue);
+            displayValue = displayValue + clickValue
+            // console.log(displayValue);
+            display.innerText = displayValue;
+        }
+    });
+});
