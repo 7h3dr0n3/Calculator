@@ -46,10 +46,19 @@ allButtons.forEach(element => {
         let clickValue = `${event.target.value}`;
 
         if (!(event.target.classList.contains('operator'))) {
-            // console.log('is a Number', clickValue);
-            displayValue = displayValue + clickValue
-            // console.log(displayValue);
+
+            displayValue = displayValue + clickValue;
             display.innerText = displayValue;
+        } else {
+            switch (clickValue) {
+                case "clear":
+                    displayValue = "";
+                    display.innerText = "0";
+                    break;
+                default:
+                    break;
+            };
         }
     });
 });
+
