@@ -30,3 +30,11 @@ function toOperate(a, operator, b) {
     }
 };
 
+const calculator = document.querySelector('#container');
+const buttons = calculator.querySelector('#buttons');
+
+buttons.addEventListener('click', event => {
+    if (event.target.matches('button')) {
+        console.log(event.target);
+    }
+})
