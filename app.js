@@ -47,8 +47,13 @@ buttons.addEventListener('click', event => {
             if (displayedNum === '0') {
                 display.innerText = buttonValue;
             } else {
-                display.innerText += buttonValue;
+                display.innerText = displayedNum + buttonValue;
             }
         }
+
+        if (action === "dot") {
+            display.innerText = displayedNum + '.'
+
+        }
     }
-})
+});
