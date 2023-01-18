@@ -52,8 +52,14 @@ buttons.addEventListener('click', event => {
         }
 
         if (action === "dot") {
-            display.innerText = displayedNum + '.'
+            display.innerText = displayedNum + '.';
+        }
 
+        if (action === "add" ||
+            action === "subtract" ||
+            action === "multiply" ||
+            action === "divide") {
+            display.innerText = "0";
         }
     }
 });
