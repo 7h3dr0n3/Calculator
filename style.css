@@ -144,12 +144,23 @@ table {
     border: ridge 10px #28282B;
 }
 
+#prev-display {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #D4D4D2;
+    font-size: 1rem;
+    color: rgb(66, 65, 65);
+    min-height: 50px;
+    vertical-align: text-top;
+}
+
 #display {
     display: flex;
     justify-content: flex-end;
-    margin-top: 50px;
     background-color: #D4D4D2;
-    font-size: 3rem;
+    font-size: 2rem;
+    min-height: 50px;
+    vertical-align: text-bottom;
 }
 
 #buttons {
