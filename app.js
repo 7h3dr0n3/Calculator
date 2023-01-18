@@ -32,9 +32,23 @@ function toOperate(a, operator, b) {
 
 const calculator = document.querySelector('#container');
 const buttons = calculator.querySelector('#buttons');
+const display = calculator.querySelector('#display');
 
 buttons.addEventListener('click', event => {
     if (event.target.matches('button')) {
-        console.log(event.target);
+        // console.log(event.target);
+
+        const element = event.target;
+        const action = element.dataset.action;
+        const buttonValue = element.innerText;
+        const displayedNum = display.innerText;
+        // console.log(element, action);
+        if (!action) {
+            if (displayedNum === '0') {
+                display.innerText = buttonValue;
+            } else {
+                display.innerText += buttonValue;
+            }
+        }
     }
 })
