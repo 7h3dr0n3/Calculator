@@ -13,16 +13,16 @@ function divide(a, b) {
 
 function toOperate(a, operator, b) {
     switch (operator) {
-        case "+":
+        case "add":
             return add(a, b);
             break;
-        case "-":
+        case "subtract":
             return subtract(a, b);
             break;
-        case "*":
+        case "multiply":
             return multiply(a, b);
             break;
-        case "/":
+        case "divide":
             return divide(a, b);
             break;
         default:
@@ -44,6 +44,7 @@ buttons.addEventListener('click', event => {
         const displayedNum = display.innerText;
         const previousButton = calculator.dataset.previousButton;
         const firstValue = calculator.dataset.firstValue;
+
         // console.log(element, action);
         if (!action) {
             if (displayedNum === '0' || previousButton === 'operation') {
@@ -61,15 +62,24 @@ buttons.addEventListener('click', event => {
             action === "subtract" ||
             action === "multiply" ||
             action === "divide") {
-            display.innerText = "0";
+
             element.classList.add('clicked');
             calculator.dataset.previousButton = 'operation';
             calculator.dataset.firstValue = displayedNum;
+            calculator.dataset.action = action;
+            display.innerText = "0";
         }
 
         Array.from(element.parentNode.children)
             .forEach(k => k.classList.remove('clicked'));
 
-
+        if (action === 'calculate') {
+            const secondValue = displayedNum;
+            calculator.dataset.secondValue = secondValue;
+            let operation = calculator.dataset.action;
+            let result = toOperate(parseInt(firstValue), operation, parseInt(secondValue));
+            // console.log(firstValue, operation, secondValue, result);
+            display.innerText = result;
+        }
     }
 });
