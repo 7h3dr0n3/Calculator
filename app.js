@@ -56,7 +56,12 @@ buttons.addEventListener('click', event => {
         }
 
         if (action === "dot") {
-            display.innerText = displayedNum + '.';
+            if (!displayedNum.includes('.')) {
+                display.innerText = displayedNum + '.';
+            } else if (previousButton === 'operation') {
+                display.innerText = '0.'
+            }
+
             calculator.dataset.previousButton = 'dot';
         }
 
@@ -69,12 +74,19 @@ buttons.addEventListener('click', event => {
             action === "subtract" ||
             action === "multiply" ||
             action === "divide") {
+            const firstValue = calculator.dataset.firstValue;
+            const operator = calculator.dataset.action;
+            const secondValue = displayedNum;
+
+            if (firstValue && operator && previousButton !== 'operation') {
+                display.innerText = toOperate(parseFloat(firstValue),
+                    operator, parseFloat(secondValue));
+            }
 
             element.classList.add('clicked');
             calculator.dataset.previousButton = 'operation';
             calculator.dataset.firstValue = displayedNum;
             calculator.dataset.action = action;
-            display.innerText = "0";
         }
 
         Array.from(element.parentNode.children)
