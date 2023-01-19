@@ -63,7 +63,7 @@ buttons.addEventListener('click', event => {
             element.classList.add('clicked');
         }
 
-        // Array.from(element.parentNode.children)
-        //     .forEach(k => k.classList.remove('clicked'));
+        Array.from(element.parentNode.children)
+            .forEach(k => k.classList.remove('clicked'));
     }
 });
