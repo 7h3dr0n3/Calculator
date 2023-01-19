@@ -78,11 +78,15 @@ buttons.addEventListener('click', event => {
             const operator = calculator.dataset.action;
             const secondValue = displayedNum;
 
+            // calculator.dataset.secondValue = secondValue;
+
             if (firstValue && operator && previousButton !== 'operation') {
                 const calcValue = toOperate(parseFloat(firstValue),
                     operator, parseFloat(secondValue));
+
                 display.innerText = calcValue;
                 calculator.dataset.firstValue = calcValue;
+                console.log(firstValue, operator, secondValue, calcValue);
             } else {
                 calculator.dataset.firstValue = displayedNum;
             }
@@ -96,16 +100,25 @@ buttons.addEventListener('click', event => {
             .forEach(k => k.classList.remove('clicked'));
 
         if (action === 'calculate') {
-            const firstValue = calculator.dataset.firstValue;
+            let firstValue = calculator.dataset.firstValue;
             const operator = calculator.dataset.action;
-            const secondValue = displayedNum;
+            let secondValue = displayedNum;
+
+            // calculator.dataset.secondValue = secondValue;
 
             if (firstValue) {
+                if (previousButton === 'calculate') {
+                    firstValue = displayedNum;
+                    secondValue = calculator.dataset.modValue;
+                }
                 const calcValue = toOperate(parseFloat(firstValue),
                     operator, parseFloat(secondValue));
-                display.innerText = calcValue;
-            }
 
+                display.innerText = calcValue;
+
+                console.log(firstValue, operator, secondValue, calcValue);
+            }
+            calculator.dataset.modValue = secondValue;
             calculator.dataset.previousButton = 'calculate';
         }
     }
