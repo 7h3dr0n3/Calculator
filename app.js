@@ -60,6 +60,10 @@ buttons.addEventListener('click', event => {
             action === "multiply" ||
             action === "divide") {
             display.innerText = "0";
+            element.classList.add('clicked');
         }
+
+        // Array.from(element.parentNode.children)
+        //     .forEach(k => k.classList.remove('clicked'));
     }
 });
