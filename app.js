@@ -77,7 +77,7 @@ buttons.addEventListener('click', event => {
             const secondValue = displayedNum;
             calculator.dataset.secondValue = secondValue;
             let operation = calculator.dataset.action;
-            let result = toOperate(parseInt(firstValue), operation, parseInt(secondValue));
+            let result = toOperate(parseFloat(firstValue), operation, parseFloat(secondValue));
             // console.log(firstValue, operation, secondValue, result);
             display.innerText = result;
         }
