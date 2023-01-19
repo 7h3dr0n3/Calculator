@@ -43,7 +43,7 @@ buttons.addEventListener('click', event => {
         const buttonValue = element.innerText;
         const displayedNum = display.innerText;
         const previousButton = calculator.dataset.previousButton;
-        const firstValue = calculator.dataset.firstValue;
+
 
         // console.log(element, action);
         if (!action) {
@@ -81,10 +81,10 @@ buttons.addEventListener('click', event => {
             if (firstValue && operator && previousButton !== 'operation') {
                 const calcValue = toOperate(parseFloat(firstValue),
                     operator, parseFloat(secondValue));
-                display.innerText = calcValue
+                display.innerText = calcValue;
                 calculator.dataset.firstValue = calcValue;
             } else {
-                calculator.dataset.firstValue = displayedNum
+                calculator.dataset.firstValue = displayedNum;
             }
 
             element.classList.add('clicked');
@@ -96,12 +96,16 @@ buttons.addEventListener('click', event => {
             .forEach(k => k.classList.remove('clicked'));
 
         if (action === 'calculate') {
+            const firstValue = calculator.dataset.firstValue;
+            const operator = calculator.dataset.action;
             const secondValue = displayedNum;
-            calculator.dataset.secondValue = secondValue;
-            let operation = calculator.dataset.action;
-            let result = toOperate(parseFloat(firstValue), operation, parseFloat(secondValue));
-            console.log(firstValue, operation, secondValue, result);
-            display.innerText = result;
+
+            if (firstValue) {
+                const calcValue = toOperate(parseFloat(firstValue),
+                    operator, parseFloat(secondValue));
+                display.innerText = calcValue;
+            }
+
             calculator.dataset.previousButton = 'calculate';
         }
     }
