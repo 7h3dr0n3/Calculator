@@ -42,9 +42,10 @@ buttons.addEventListener('click', event => {
         const action = element.dataset.action;
         const buttonValue = element.innerText;
         const displayedNum = display.innerText;
+        const previousButton = calculator.dataset.previousButton;
         // console.log(element, action);
         if (!action) {
-            if (displayedNum === '0') {
+            if (displayedNum === '0' || previousButton === 'operation') {
                 display.innerText = buttonValue;
             } else {
                 display.innerText = displayedNum + buttonValue;
@@ -60,10 +61,12 @@ buttons.addEventListener('click', event => {
             action === "multiply" ||
             action === "divide") {
             display.innerText = "0";
-            element.classList.add('clicked');
+            calculator.dataset.previousButton = 'operation';
         }
 
         Array.from(element.parentNode.children)
             .forEach(k => k.classList.remove('clicked'));
+
+
     }
 });
