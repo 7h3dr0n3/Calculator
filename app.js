@@ -47,12 +47,16 @@ buttons.addEventListener('click', event => {
 
         // console.log(element, action);
         if (!action) {
-            if (displayedNum === '0' || previousButton === 'operation') {
+            if (displayedNum === '0' ||
+                previousButton === 'operation' ||
+                previousButton === 'calculate'
+            ) {
                 display.innerText = buttonValue;
-                calculator.dataset.previousButton = 'number';
+
             } else {
                 display.innerText = displayedNum + buttonValue;
             }
+            calculator.dataset.previousButton = 'number';
         }
 
         if (action === "dot") {
