@@ -49,6 +49,7 @@ buttons.addEventListener('click', event => {
         if (!action) {
             if (displayedNum === '0' || previousButton === 'operation') {
                 display.innerText = buttonValue;
+                calculator.dataset.previousButton = 'number';
             } else {
                 display.innerText = displayedNum + buttonValue;
             }
@@ -56,6 +57,12 @@ buttons.addEventListener('click', event => {
 
         if (action === "dot") {
             display.innerText = displayedNum + '.';
+            calculator.dataset.previousButton = 'dot';
+        }
+
+        if (action === "clear") {
+            display.innerText = display.innerText.slice(0, -1);
+            calculator.dataset.previousButton = 'clear';
         }
 
         if (action === "add" ||
@@ -78,8 +85,9 @@ buttons.addEventListener('click', event => {
             calculator.dataset.secondValue = secondValue;
             let operation = calculator.dataset.action;
             let result = toOperate(parseFloat(firstValue), operation, parseFloat(secondValue));
-            // console.log(firstValue, operation, secondValue, result);
+            console.log(firstValue, operation, secondValue, result);
             display.innerText = result;
+            calculator.dataset.previousButton = 'calculate';
         }
     }
 });
