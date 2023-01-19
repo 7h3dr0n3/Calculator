@@ -43,6 +43,7 @@ buttons.addEventListener('click', event => {
         const buttonValue = element.innerText;
         const displayedNum = display.innerText;
         const previousButton = calculator.dataset.previousButton;
+        const firstValue = calculator.dataset.firstValue;
         // console.log(element, action);
         if (!action) {
             if (displayedNum === '0' || previousButton === 'operation') {
@@ -61,7 +62,9 @@ buttons.addEventListener('click', event => {
             action === "multiply" ||
             action === "divide") {
             display.innerText = "0";
+            element.classList.add('clicked');
             calculator.dataset.previousButton = 'operation';
+            calculator.dataset.firstValue = displayedNum;
         }
 
         Array.from(element.parentNode.children)
