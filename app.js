@@ -79,13 +79,16 @@ buttons.addEventListener('click', event => {
             const secondValue = displayedNum;
 
             if (firstValue && operator && previousButton !== 'operation') {
-                display.innerText = toOperate(parseFloat(firstValue),
+                const calcValue = toOperate(parseFloat(firstValue),
                     operator, parseFloat(secondValue));
+                display.innerText = calcValue
+                calculator.dataset.firstValue = calcValue;
+            } else {
+                calculator.dataset.firstValue = displayedNum
             }
 
             element.classList.add('clicked');
             calculator.dataset.previousButton = 'operation';
-            calculator.dataset.firstValue = displayedNum;
             calculator.dataset.action = action;
         }
 
