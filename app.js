@@ -74,6 +74,15 @@ buttons.addEventListener('click', event => {
             calculator.dataset.previousButton = 'clear';
         }
 
+        if (action === "allClear") {
+            calculator.dataset.firstValue = '';
+            calculator.dataset.modValue = '';
+            calculator.dataset.secondValue = '';
+            calculator.dataset.previousButton = '';
+            calculator.dataset.action = '';
+            display.innerText = '0';
+        }
+
         if (action === "add" ||
             action === "subtract" ||
             action === "multiply" ||
