@@ -52,7 +52,6 @@ buttons.addEventListener('click', event => {
                 previousButton === 'calculate'
             ) {
                 display.innerText = buttonValue;
-
             } else {
                 display.innerText = displayedNum + buttonValue;
             }
@@ -62,7 +61,8 @@ buttons.addEventListener('click', event => {
         if (action === "dot") {
             if (!displayedNum.includes('.')) {
                 display.innerText = displayedNum + '.';
-            } else if (previousButton === 'operation') {
+            } else if (previousButton === 'operation' ||
+                previousButton === 'calculate') {
                 display.innerText = '0.'
             }
 
@@ -84,7 +84,10 @@ buttons.addEventListener('click', event => {
 
             // calculator.dataset.secondValue = secondValue;
 
-            if (firstValue && operator && previousButton !== 'operation') {
+            if (firstValue &&
+                operator &&
+                previousButton !== 'operation' &&
+                previousButton !== 'calculate') {
                 const calcValue = toOperate(parseFloat(firstValue),
                     operator, parseFloat(secondValue));
 
