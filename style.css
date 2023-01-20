@@ -2,6 +2,10 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@font-face {
+    font-family: digital-7;
+    src: url(./font/digital-7/digital-7.ttf);
+}
 
 html,
 body,
@@ -158,9 +162,10 @@ table {
     display: flex;
     justify-content: flex-end;
     background-color: #D4D4D2;
-    font-size: 2rem;
+    font-size: 3rem;
     min-height: 50px;
     vertical-align: text-bottom;
+    font-family: 'digital-7';
 }
 
 #buttons {
