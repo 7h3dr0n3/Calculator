@@ -69,6 +69,22 @@ buttons.addEventListener('click', event => {
             calculator.dataset.previousButton = 'dot';
         }
 
+        if (action === "negative") {
+            if (displayedNum !== '0' &&
+                !displayedNum.includes('-') &&
+                previousButton !== 'negative') {
+                display.innerText = '-' + displayedNum;
+                calculator.dataset.previousButton = 'negative';
+            } else if (previousButton === 'negative') {
+                display.innerText = displayedNum.slice(1);
+                calculator.dataset.previousButton = '';
+            } else if (previousButton === 'operation' ||
+                displayedNum === '0') {
+                display.innerText = '-';
+                calculator.dataset.previousButton = 'negative';
+            }
+        }
+
         if (action === "clear") {
             display.innerText = display.innerText.slice(0, -1);
             calculator.dataset.previousButton = 'clear';
@@ -96,7 +112,8 @@ buttons.addEventListener('click', event => {
             if (firstValue &&
                 operator &&
                 previousButton !== 'operation' &&
-                previousButton !== 'calculate') {
+                previousButton !== 'calculate' &&
+                previousButton !== 'negative') {
                 const calcValue = toOperate(parseFloat(firstValue),
                     operator, parseFloat(secondValue));
 
